@@ -33,9 +33,9 @@ import { ChatGptAiModule } from './chat-gpt-ai/chat-gpt-ai.module';
         autoLoadEntities: true,
         synchronize: true,
         cache: false,
-        ssl: {
-          rejectUnauthorized: false,
-        },
+        // ssl: {
+        //   rejectUnauthorized: false,
+        // },
       }),
       inject: [ConfigService],
     }),

@@ -4,8 +4,10 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {cors: true});
   app.setGlobalPrefix('api/v1');
+  app.enableCors();
+
   const options = new DocumentBuilder()
     .setTitle('PicSpeak API')
     .setDescription('PicSpeak API')
@@ -22,6 +24,6 @@ async function bootstrap() {
     transform: true,
   }));
 
-  await app.listen(3000,'192.168.0.21');
+  await app.listen(process.env.PORT || 3000, "0.0.0.0");
 }
 bootstrap();
